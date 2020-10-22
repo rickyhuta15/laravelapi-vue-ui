@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,10 +24,15 @@ Route::get('/testing', function () {
 });
 
 Route::get('/testing/{no}', [LatihanController::class, 'testing']);
+
 /*
 |
 // Setiap ada controller baru, maka harus ditambahkan use App/Http..... di bawah <?php
 |
-*/
 Route::get('/test', [LatihanController::class, 'index']);
 Route::get('/test/{ke}', [LatihanController::class, 'urutan']);
+*/
+Route::get('', [LatihanController::class, 'index']);
+Route::get('/friends', [LatihanController::class, 'index']);
+Route::get('/friends/create', [LatihanController::class, 'create']);
+Route::post('/friends', [LatihanController::class, 'store']);
