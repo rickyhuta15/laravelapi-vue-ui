@@ -26,7 +26,7 @@
   </div>
 </nav>
 
-<a href="/friends/create" class="card-link btn-primary">Tambah Kontak</a>
+<a href="/friends/create" class="card-link btn-primary">Tambah Kontak </a>
 
     @yield('content')
     </div>

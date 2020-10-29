@@ -36,3 +36,7 @@ Route::get('', [LatihanController::class, 'index']);
 Route::get('/friends', [LatihanController::class, 'index']);
 Route::get('/friends/create', [LatihanController::class, 'create']);
 Route::post('/friends', [LatihanController::class, 'store']);
+Route::get('/friends/{id}', [LatihanController::class, 'show']);
+Route::get('/friends/{id}/edit', [LatihanController::class, 'edit']);
+Route::put('/friends/{id}', [LatihanController::class, 'update']);
+Route::delete('/friends/{id}', [LatihanController::class, 'destroy']);
