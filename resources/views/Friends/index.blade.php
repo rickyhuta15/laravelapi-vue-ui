@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Title Pake Yield')
+@section('title', 'Friends')
 
 @section('content')
-
+<a href="/friends/create" class="card-link btn-primary">Tambah Kontak </a>
 @foreach($friends as $friend)
 
 <div class="card" style="width: 18rem;">
