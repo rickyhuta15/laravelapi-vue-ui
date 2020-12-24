@@ -4,18 +4,28 @@
 
 @section('content')
 <a href="/groups/create" class="card-link btn-primary">Tambah Groups </a>
-@foreach($groups as $group)
 
+@foreach($groups as $group)
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <a  href="/groups/{{ $group['id'] }}" class="card-title">{{ $group['name'] }}</a>
 
     <p class="card-text">{{ $group['description'] }}</p>
       <hr>
-      <a href="" class="card-link btn-primary">Tambah Anggota Group </a>
+      <a href="/groups/addmember/{{ $group['id'] }}" class="card-link btn-primary">Tambah Anggota Group </a>
+      <ul class="list-group">
       @foreach ($group->friends as $friend)
-      <li> {{$friend->nama}} </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{ $friend->nama }}
+          <form action="/groups/deletemember/{{ $friend['id'] }}" method="post">
+          <?php // penulisan {{group['id']}} bisa diganti dengan {{$group->id}} ?>
+          @csrf
+          @method('PUT')
+          <button class="card-link btn-danger">Hapus</button>
+          </form>
+        </li>
       @endforeach
+      </ul>
       
       <hr>
     
@@ -24,7 +34,7 @@
     <form action="/groups/{{ $group['id'] }}" method="post">
     @csrf
     @method('DELETE')
-    <button class="card-link btn-danger">Hapus Groups</button>
+    <button type="submit" class="card-link btn-danger">Hapus Groups</button>
     </form>
     
   </div>

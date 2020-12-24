@@ -30,6 +30,14 @@
     <div class="alert alert-danger"> {{ $message }}
     </div>
   @enderror
+  <div class="form-group">
+    <label for="exampleInputPassword1">Kode Group</label>
+    <input type="text" class="form-control" name="groups_id" id="exampleInputPassword1" value="{{ old('groups_id') }}">
+  </div>
+  @error('groups_id')
+    <div class="alert alert-danger"> {{ $message }}
+    </div>
+  @enderror
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 

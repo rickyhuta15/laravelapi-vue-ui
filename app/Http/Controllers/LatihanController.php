@@ -48,6 +48,7 @@ class LatihanController extends Controller
         $friends->nama = $request->nama;
         $friends->no_tlp = $request->no_tlp;
         $friends->alamat = $request->alamat;
+		$friends->groups_id = $request->groups_id;
 
         $friends->save();
 

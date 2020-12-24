@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Groups;
+use App\Models\Friends;
 use Illuminate\Http\Request;
 
 class GroupsController extends Controller
@@ -106,6 +107,38 @@ class GroupsController extends Controller
     public function destroy($id)
     {
         Groups::find($id)->delete();
+        return redirect('/groups');
+    }
+
+    public function addmember($id)
+    {
+        $friends = Friends::where('groups_id','=',0)->get();
+        $groups = Groups::where('id', $id)->first();
+        return view('groups.addmember', ['group' => $groups, 'friends' => $friends]);
+    }
+
+    public function updatemembers(Request $request, $id)
+    {
+        $friends = Friends::where('id', $request->friends_id)->first();
+        Friends::find($friends->id)->update([
+            'groups_id' => $id
+            // $id di atas merupakan id yang diambil dari link di addmember.php line 7
+            //friends_id di ambil dari form select pada addmember.php line 12
+        ]);
+
+        return redirect('/groups/addmember/' . $id);
+    }
+
+    public function deletemembers(Request $request, $id)
+    {
+        // dd($id);
+        // dd = die and dump, melihat isi dan menghentikan program (pengecekan)
+        Friends::find($id)->update([
+            'groups_id' => 0
+            // $id di atas merupakan id yang diambil dari link di addmember.php line 7
+            //friends_id di ambil dari form select pada addmember.php line 12
+        ]);
+
         return redirect('/groups');
     }
 }

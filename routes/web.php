@@ -46,10 +46,13 @@ Route::get('', [LatihanController::class, 'index']);
 
 //route resource di atas bisa digunakan untuk mewakili semua route yang telah dicoba sebelumnya
 //dari index sampai destroy, tapi hanya satu controller, untuk >1 controller maka seperti ini :
+//untuk membuat controller secara instan bisa menggunakan terminal dengan perintah :
+// php artisan make:controller namacontroller --resource
 Route::resources([
     'friends' => LatihanController::class,
     'groups' => GroupsController::class,
 ]);
 
-//untuk membuat controller secara instan bisa menggunakan terminal dengan perintah :
-// php artisan make:controller namacontroller --resource
+Route::get('/groups/addmember/{group}', [GroupsController::class, 'addmember']);
+Route::put('/groups/addmember/{group}', [GroupsController::class, 'updatemembers']);
+Route::put('/groups/deletemember/{group}', [GroupsController::class, 'deletemembers']);
