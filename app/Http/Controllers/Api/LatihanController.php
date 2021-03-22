@@ -74,7 +74,13 @@ class LatihanController extends Controller
      */
     public function show($id)
     {
-        //
+        $friends = Friends::where('id', $id)->first();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Detail Data Teman',
+            'data' => $friends
+        ], 200);
     }
 
     /**
@@ -86,7 +92,24 @@ class LatihanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'no_tlp' => 'required',
+            'alamat' => 'required',
+        ]);
+
+        $f = Friends::find($id)->update([
+            'nama' => $request->nama,
+            'no_tlp' => $request->no_tlp,
+            'alamat' => $request->alamat
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Teman Diubah',
+            'data' => $f
+        ], 200);
+        
     }
 
     /**
@@ -97,6 +120,11 @@ class LatihanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cek = Friends::find($id)->delete();
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Dihapus',
+            'data' => $cek
+        ], 200);
     }
 }

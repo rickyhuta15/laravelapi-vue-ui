@@ -54,5 +54,5 @@ Route::resources([
 ]);
 
 Route::get('/groups/addmember/{group}', [GroupsController::class, 'addmember']);
-Route::put('/groups/addmember/{group}', [GroupsController::class, 'updatemembers']);
+Route::put('/groups/updatemember/{group}', [GroupsController::class, 'updatemembers']);
 Route::put('/groups/deletemember/{group}', [GroupsController::class, 'deletemembers']);

@@ -26,7 +26,7 @@
 
 @endforeach
     {{ $friends->links() }}
-    <? // links berfungsi untuk membuat button previous dan next
+ // links berfungsi untuk membuat button previous dan next
 @endsection
 
     
