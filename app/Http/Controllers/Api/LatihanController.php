@@ -16,7 +16,7 @@ class LatihanController extends Controller
      */
     public function index()
     {
-        $friends = Friends::orderBy('id', 'desc')->paginate(2);
+        $friends = Friends::all();
 
         return response()->json([
             'success'   => true,
