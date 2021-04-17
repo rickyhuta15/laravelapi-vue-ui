@@ -21,13 +21,10 @@
           <li class="nav-item">
            <router-link class="nav-link" to="/">Home</router-link>
           </li>
-          <!-- <li class="nav-item">
-            <router-link class="nav-link" to="/createfriends">Create friends</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/editfriends">Edit friends</router-link>
-          </li> -->
           
+          <li class="nav-item">
+            <router-link class="nav-link" to="/groups">groups</router-link>
+         </li>
         </ul>
       </div>
     </div>
